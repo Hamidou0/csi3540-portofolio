@@ -1,0 +1,176 @@
+body{
+    padding-left:44px;
+    padding-right:44px ;
+    padding-top: 40px;
+    overflow-x: hidden; 
+    
+    
+}
+
+/************************************/
+/** navbar **/
+nav li {
+    font-size: 3em;
+    margin-left: 24px;
+    display: inline;    
+}
+
+nav a {
+    color: black; 
+    text-decoration: none;  
+}
+
+nav a:hover {
+  color: #2baabbdd; 
+  text-decoration: none; 
+  animation: nav_exp 1s forwards;
+}
+/************************************/
+/** home body **/
+.upper_co{
+  padding: 1em;
+  color: rgb(255, 255, 255);
+  background-image: url("img/xianxia_wall_2.jpeg");
+  background-size: contain;
+}
+.upper_co h1{
+    margin-left: 30%;
+    font-size: 4em;
+}
+.upper_co p{
+  font-size: 140%;
+}
+
+#slide1 {
+    margin-left: 30px;
+    animation: 1s slide 1s forwards;
+    transform:translateX(-200%);
+  }
+#slide2 {
+    animation: 1s slide 2s forwards;
+    transform:translateX(-100%);
+  }
+
+.welcome_text{
+  text-align: center;
+}
+
+/************************************/
+/** footer **/
+
+footer{
+  margin-top: 30px;
+}
+footer p{
+  margin-left:80%;
+  display: inline;
+}
+
+.icon {
+  width: 50px;
+}
+
+
+/************************************/
+/** section **/
+
+.section_block{
+  margin-top: 2em;
+  padding-left: 1em;
+  border: 2px solid black;
+  border-radius: 30px;
+  font-size: 140%;
+}
+
+.section_title{
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/************************************/
+/** section skill icon **/
+
+.skills_icons {
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+  -ms-grid-columns: (minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  background: white;
+  width: auto;
+  height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .skills_icons {
+    width: auto;
+    height: auto;
+    margin: 20px;
+    -ms-grid-columns: (minmax(0, 1fr));
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+.skills_icons img {
+  background-color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .skills_icons img {
+    width: auto;
+    height: 130px;
+  }
+}
+
+.grid-items {
+  overflow: hidden;
+  height: 200px;
+  
+}
+
+.fadein {
+  -webkit-animation: fadeIn ease 4s infinite;
+          animation: fadeIn ease 4s infinite;
+}
+.fadein2 {
+  -webkit-animation: fadeIn2 ease 4s infinite;
+          animation: fadeIn2 ease 4s infinite;
+}
+/************************************/
+  @keyframes slide {
+    to {
+      transform:translateX(0);
+    }
+  }
+
+  @keyframes nav_exp{
+    100%{
+      font-size: 110%; margin-right: 50px;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn2 {
+    0% {
+      opacity: 1;
+    }
+    50%{
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
