@@ -27,7 +27,30 @@
     <div class="upper_co">
         <h1 id="slide1">Hamidou Nouhoum</h1>
         <h1 id="slide2">Cisse</h1>
-        <p>Welcome to my personnal website</p>
+        
+    </div>
+    <h3>Welcome to my personnal website</h3>
+    <h2 class="txt">Contact Me</h2>
+    <div class="sec">
+      <form class="gform email_form" name="email_sent" action="https://script.google.com/macros/s/AKfycbzwQW0jZSJuVujPsVReIn_BRLLFCm4945G1WHiOX09BhuaLXPW09VGl3O5icxWV3VqS/exec" method="post">
+          <div>
+              Name: <input id="name" type="text" name="name" required>
+          </div>
+          <div>
+              Email: <input id="email" type="email" name="email" placeholder="abc@cba.abc" required>
+          </div>
+          <div id="message_div">
+              Message: <br><textarea id="message" name="message" placeholder ="message..." required></textarea>
+          </div>
+          
+          <div>
+              <input class="nice_button" type="submit" value="Submit">
+          </div>
+          <div style="display:none" class="thankyou_message txt">
+              <h2><em>Thanks</em> for contacting me!</h2>
+          </div>
+          
+        </form>
     </div>
     
 </body>
