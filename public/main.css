@@ -123,14 +123,20 @@ footer p{
     height: 130px;
   }
 }
-
+.grid-elem{
+  padding: 10px;
+  height: 180px;
+}
 .grid-items {
-  overflow: hidden;
   height: 200px;
   
 }
 
-.fadein {
+.skil{
+  overflow: hidden;
+}
+
+.fadein1 {
   -webkit-animation: fadeIn ease 4s infinite;
           animation: fadeIn ease 4s infinite;
 }
@@ -153,11 +159,9 @@ footer p{
 
   @keyframes fadeIn {
     0% {
-      opacity: 0;
-    }
-    50%{
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }
@@ -165,11 +169,9 @@ footer p{
 
   @keyframes fadeIn2 {
     0% {
-      opacity: 1;
-    }
-    50%{
       opacity: 0;
     }
+    
     100% {
       opacity: 1;
     }
