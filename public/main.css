@@ -7,6 +7,21 @@ body{
     
 }
 
+/***********************************/
+/** contact **/
+.email_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  box-orient: vertical;
+  box-direction: normal;
+ 
+          flex-direction: column;
+  box-align: center;
+          align-items: center;
+  font-size: 30px;
+}
+
 /************************************/
 /** navbar **/
 nav li {
@@ -53,8 +68,15 @@ nav a:hover {
 
 .welcome_text{
   text-align: center;
+  font-size: 3em;
+  font-family: 'Franklin Gothic Medium';
 }
 
+
+.text_h{
+  text-align: center;
+  font-size: 2em;
+}
 /************************************/
 /** footer **/
 
@@ -68,6 +90,7 @@ footer p{
 
 .icon {
   width: 50px;
+  padding-left: 10%;
 }
 
 
@@ -89,13 +112,49 @@ footer p{
 
 .sec {
   border-radius: 10px;
-  width: 80%;
   margin: 2vw;
   font-size: 21px;
   padding: 3vw;
   background: #f0f0ef;
   -webkit-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
           box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+/************************************/
+/** button skin **/
+.nice_button {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 2px solid #f1dddd;
+  padding: 5px;
+  background-color: #ee9014;
+  color: #182541;
+  margin: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 25px 35px 25px 35px;
+}
+
+.nice_button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #4165b1;
+}
+
+#message_div {
+  margin-top: 20px;
+}
+
+#message {
+  width: 60vw;
+  height: 40vh;
+  font-size: 25px;
+  text-align: left;
 }
 
 /************************************/
