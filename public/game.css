@@ -1,0 +1,91 @@
+body{
+    text-align: center;
+    display: block;
+    background-color: #ECF2FF;
+}
+
+.head_text{
+    font-family: Georgia, 'Times New Roman';
+    color: #605536;
+    font-size: 200%;
+}
+#board{
+    display: none;
+    min-height: 60vh;
+    margin-left: 40px;
+    margin-right: 40px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+
+.veil{
+    background-color: rgba(67, 66, 66, 0.5);
+}
+#replay{
+    display: none;
+}
+
+#block4, #block5, #block6, #block7, #block8, #block9 {
+    border-top: 8px solid #E5D1FA;
+}
+
+#block1, #block4, #block7, #block2, #block5, #block8 {
+    border-right: 8px solid #E5D1FA;
+}
+
+.imageCells{
+    margin: 3px;
+    
+    width: 18vh;
+    height: 18vh;
+}
+
+
+.boardCells{
+    margin-right: 5vw;
+    background: transparent;
+    border: none !important;
+    font-size:0;
+
+    width: 10vh;
+    height: 10vh;
+    color: red;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+
+/************************************/
+/** navbar **/
+nav li {
+    font-size: 2em;
+    margin-left: 24px;
+    display: inline;    
+}
+
+nav a {
+    color: black; 
+    text-decoration: none;  
+}
+
+nav a:hover {
+  color: #2baabbdd; 
+  text-decoration: none; 
+  animation: nav_exp 1s forwards;
+}
+
+/************************************/
+/** footer **/
+
+footer{
+    margin-top: 30px;
+  }
+  footer p{
+    margin-left:80%;
+    display: inline;
+  }
+  
+  .icon {
+    width: 50px;
+    padding-left: 10%;
+  }
+  
