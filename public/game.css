@@ -9,6 +9,13 @@ body{
     color: #605536;
     font-size: 200%;
 }
+
+.ld_text{
+    font-family: Georgia, 'Times New Roman';
+    color: #605536;
+    font-size: 90%;
+}
+
 #board{
     display: none;
     min-height: 60vh;
@@ -35,7 +42,7 @@ body{
 
 .imageCells{
     margin: 3px;
-    
+
     width: 18vh;
     height: 18vh;
 }
@@ -59,17 +66,17 @@ body{
 nav li {
     font-size: 2em;
     margin-left: 24px;
-    display: inline;    
+    display: inline;
 }
 
 nav a {
-    color: black; 
-    text-decoration: none;  
+    color: black;
+    text-decoration: none;
 }
 
 nav a:hover {
-  color: #2baabbdd; 
-  text-decoration: none; 
+  color: #2baabbdd;
+  text-decoration: none;
   animation: nav_exp 1s forwards;
 }
 
@@ -83,9 +90,8 @@ footer{
     margin-left:80%;
     display: inline;
   }
-  
+
   .icon {
     width: 50px;
     padding-left: 10%;
   }
-  

@@ -21,6 +21,8 @@ $cellLeft = [
     [2,0],[2,1],[2,2],
 ];
 
+$leaderboard = [];
+
 if(isset($_SESSION['gameGrid']) && isset($_SESSION['playerTurn']) &&
 isset($_SESSION['turnPlayed'])){
     $gameGrid = $_SESSION['gameGrid'];
@@ -28,6 +30,9 @@ isset($_SESSION['turnPlayed'])){
     $turnPlayed  = $_SESSION['turnPlayed'];
     if(isset($_SESSION['cellLeft'])){
         $cellLeft = $_SESSION['cellLeft'];
+    }  
+    if(isset($_SESSION['leaderboard'])){
+        $leaderboard = $_SESSION['leaderboard'];
     }  
 }
 
@@ -60,8 +65,7 @@ if(isset($_POST['reset'])){
     }
     echo json_encode('a');
 }else{
-    play($_POST['id'], $_POST['mplayer'], $turnPlayed, $playerTurn, $gameGrid, $response,$text_reponse,$cellLeft);
-
+    play($_POST['id'], $_POST['mplayer'], $turnPlayed, $playerTurn, $gameGrid, $response,$text_reponse,$cellLeft, $leaderboard);
     $flat_grid = [];
     for($i = 0; $i < 3; $i++){
         for($j = 0; $j < 3; $j++){
@@ -70,11 +74,17 @@ if(isset($_POST['reset'])){
     }
     array_push($flat_grid, $text_reponse);
     array_push($flat_grid, $response);
+
+    $flat_leaderboard;
+    foreach($leaderboard as $key => $value){
+        $flat_leaderboard = [$key,$value];
+        array_push($flat_grid, $flat_leaderboard);
+    }
     echo json_encode($flat_grid);
 }
 
 function play($id, $mPlayer, &$turnPlayed, &$playerTurn, &$gameGrid, &$response,
-                &$text_reponse, &$cellLeft){
+                &$text_reponse, &$cellLeft, &$leaderboard){
       switch($playerTurn) {
         case 0:
             switch($gameGrid[floor($id/3)][$id%3]){
@@ -116,13 +126,13 @@ function play($id, $mPlayer, &$turnPlayed, &$playerTurn, &$gameGrid, &$response,
 $text_reponse);
         }
 
-        if(checkWinner(1, $gameGrid)){
+        if(checkWinner(1, $gameGrid, $leaderboard)){
             $text_reponse=6;
             $playerTurn = 2;
             //resetGame($gameGrid, $cellLeft, $playerTurn, $turnPlayed);
             $response = 1; 
         }
-        elseif(checkWinner(2, $gameGrid)){
+        elseif(checkWinner(2, $gameGrid, $leaderboard)){
             $text_reponse=7;
             $playerTurn = 2;
             //resetGame($gameGrid, $cellLeft, $playerTurn, $turnPlayed);
@@ -140,14 +150,34 @@ $text_reponse);
 }
 
 
-function checkWinner($num, &$gameGrid){
-    if( ($gameGrid[0][0] == $num) & ($gameGrid[1][0] == $num) & ($gameGrid[2][0] == $num) ) return true;
-    elseif( ($gameGrid[0][0] == $num) & ($gameGrid[0][1] == $num) & ($gameGrid[0][2] == $num) ) return true;
-    elseif( ($gameGrid[0][0] == $num) & ($gameGrid[1][1] == $num) & ($gameGrid[2][2] == $num) ) return true;
-    elseif( ($gameGrid[0][2] == $num) & ($gameGrid[1][2] == $num) & ($gameGrid[2][2] == $num) ) return true;
-    elseif( ($gameGrid[2][0] == $num) & ($gameGrid[2][1] == $num) & ($gameGrid[2][2] == $num) ) return true;
-    elseif( ($gameGrid[1][1] == $num) & ($gameGrid[2][1] == $num) & ($gameGrid[0][1] == $num) ) return true;
-    else return false;
+function checkWinner($num, &$gameGrid, &$leaderboard){
+    $ret = false;
+    if( ($gameGrid[0][0] == $num) & ($gameGrid[1][0] == $num) & ($gameGrid[2][0] == $num) ) $ret =  true;
+    elseif( ($gameGrid[0][1] == $num) & ($gameGrid[1][1] == $num) & ($gameGrid[2][1] == $num) ) $ret =  true;
+    elseif( ($gameGrid[0][2] == $num) & ($gameGrid[1][2] == $num) & ($gameGrid[2][2] == $num) ) $ret =  true;
+
+    elseif( ($gameGrid[0][0] == $num) & ($gameGrid[0][1] == $num) & ($gameGrid[0][2] == $num) ) $ret =  true;
+    elseif( ($gameGrid[1][0] == $num) & ($gameGrid[1][1] == $num) & ($gameGrid[1][2] == $num) ) $ret =  true;
+    elseif( ($gameGrid[2][0] == $num) & ($gameGrid[2][1] == $num) & ($gameGrid[2][2] == $num) ) $ret =  true;
+
+    elseif( ($gameGrid[0][0] == $num) & ($gameGrid[1][1] == $num) & ($gameGrid[2][2] == $num) ) $ret =  true;
+    elseif( ($gameGrid[0][2] == $num) & ($gameGrid[1][1] == $num) & ($gameGrid[2][0] == $num) ) $ret =  true;
+    
+    if($ret == true){
+        $player = ($num == 1) ? $_POST['p1'] : $_POST['p2'];
+        if(array_key_exists($player, $leaderboard)){
+            $leaderboard[$player]++;
+        }
+        else{
+            $leaderboard[$player] = 1;
+        }
+        $_SESSION['leaderboard'] = $leaderboard;
+    }
+
+    return $ret;
+
+    
+    
 }
 
 
@@ -158,7 +188,7 @@ function automatedPlayer( &$turnPlayed, &$playerTurn, &$gameGrid, &$response, &$
     while($cont){
 
         if(count($cellLeft) == 0){
-          resetGame($gameGrid, $cellLeft, $playerTurn, $turnPlayed);
+          //resetGame($gameGrid, $cellLeft, $playerTurn, $turnPlayed);
           $response = 1; break;
         }else{
             $set = $cellLeft[ rand(0,count($cellLeft)-1)];

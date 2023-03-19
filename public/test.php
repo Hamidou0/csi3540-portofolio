@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="assets/jquery.min.js"></script>
     <title>Tic Tac Toe</title>
-    
+
 </head>
 <body>
     <style>
@@ -29,9 +29,8 @@
         <li>
         <a  href="test.php">Games</a>
         </li>
-        </ul>        
+        </ul>
     </nav>
-
     <div class="head_text">
         <h1 id="tt">TIC-TAC-TOE</h1>
     </div>
@@ -41,28 +40,25 @@
         <label for="2player"> 2 Players</label><br>
         <label for="p1name">Player 1 name's</label>
         <input type="text" id="p1name" name="p1name" value="Player 1"><br><br>
-        <label for="p1name">Player 1 name's</label>
+        <label for="p1name">Player 2 name's</label>
         <input type="text" id="p2name" name="p2name" value="Player 2"><br><br>
         <button id="startBtn">Start a game</button>
     </div>
     <div id="replay">
         <button id="againBtn">New game</button>
     </div>
-    
+
 
     <div class="head_text">
         <p id="gameInfo"></p>
     </div>
 
-    <footer>
-        <a href="https://github.com/Hamidou0" target="_blank">
-            <img class="icon" src="img/github.png" alt="">
-        </a>
-        <a href="https://www.linkedin.com/in/hamidou-cisse-b6482419a/" target="_blank">
-            <img class="icon" src="img/linkedin.png" alt="">
-        </a>
-        <p>Copyright &copy; 2023.</p>
-    </footer>
+    <div class="ldtext">
+        <h3>Leaderboard</h3>
+        <table id="leaderboard">
+
+        </table>
+    </div>
 
 </body>
 </html>

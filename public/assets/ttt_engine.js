@@ -36,6 +36,8 @@ document.getElementById('8cell').addEventListener("click", function(){clicked(8)
 function clicked(id){
     let req = {
         id:id,
+        p1:player1_name,
+        p2:player2_name,
         mplayer:document.getElementById('2players').checked
     }
     
@@ -45,7 +47,9 @@ function clicked(id){
         contentType:  'application/x-www-form-urlencoded; charset=UTF-8',
         data: jQuery.param(req),
         success: function(response){
+            
             let arr = JSON.parse(response);
+            console.log(response);
             let p1       = ""+player1_name+" has selected a cell";
             let p2       = ""+player2_name+" has selected a cell";
             let w1       = ""+player1_name+" has won the game!";
@@ -73,6 +77,7 @@ function clicked(id){
             }
             if(arr[10] == 1){
                 gameDone();
+                fillLeaderboard(arr);
             }
 
         }
@@ -86,6 +91,20 @@ function disableCells(){
     });
 }
 
+function fillLeaderboard(table){
+    let leaderboard = document.getElementById("leaderboard");
+    leaderboard.innerHTML ='<tr>'+
+                            '<th>Player name</th>'+
+                        '<th>Wins</th>'+
+                        '</tr>';
+    for(let i = 11 ; i < table.length; i++){
+        leaderboard.innerHTML += '<tr>'+
+                                 '<td>'+table[i][0]+'</td>'  +
+                                 '<td>'+table[i][1]+'</td>'  +
+                                 '</tr>';
+    }
+
+}
 function enableCells(){
     let cells = document.querySelectorAll(".boardCells");
     cells.forEach(function(i) {
